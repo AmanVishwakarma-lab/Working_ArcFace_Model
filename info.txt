@@ -1,0 +1,176 @@
+Image
+   ↓
+RetinaFace (Face Detection + Alignment)
+   ↓
+ArcFace (512-D Embedding)
+   ↓
+Cosine Similarity
+   ↓
+Best Match Name
+   ↓
+Flask JSON Response
+
+
+🏗️ Technologies Used in Your System
+🔹 1️⃣ Backend Framework
+
+Flask
+
+Python web framework
+
+Handles API requests
+
+Receives image from Android / Postman
+
+Returns JSON response
+
+Example endpoint:
+
+POST /recognize
+
+🔹 2️⃣ Face Detection Model
+
+RetinaFace
+
+Purpose:
+
+Detect face in image
+
+Give bounding box
+
+Give facial landmarks (eyes, nose, mouth)
+
+Align face properly
+
+Why RetinaFace?
+
+Very accurate
+
+Works well with ArcFace
+
+Production-level detector
+
+🔹 3️⃣ Face Embedding Model
+
+ArcFace (via InsightFace – buffalo_l model)
+
+This is the MOST IMPORTANT part.
+
+ArcFace:
+
+Deep CNN model
+
+Generates 512-dimensional embedding
+
+Trained on millions of faces
+
+State-of-the-art accuracy
+
+Embedding Example:
+
+[0.0234, -0.1456, 0.8876, .... 512 values]
+
+🔹 4️⃣ Embedding Comparison Technique
+
+Cosine Similarity
+
+Formula used:
+
+𝑐
+𝑜
+𝑠
+(
+𝜃
+)
+=
+𝐴
+⋅
+𝐵
+∣
+∣
+𝐴
+∣
+∣
+∣
+∣
+𝐵
+∣
+∣
+cos(θ)=
+∣∣A∣∣∣∣B∣∣
+A⋅B
+	​
+
+
+In Python:
+
+np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+
+Why cosine?
+
+Best for face embeddings
+
+Works well with ArcFace
+
+Industry standard
+
+🧠 Full Pipeline Technology Flow
+Image
+   ↓
+RetinaFace (Face Detection + Alignment)
+   ↓
+ArcFace (512-D Embedding)
+   ↓
+Cosine Similarity
+   ↓
+Best Match Name
+   ↓
+Flask JSON Response
+
+📦 Exact Model Used
+
+When we wrote:
+
+FaceAnalysis(name="buffalo_l")
+
+
+It loads:
+
+Component	Model
+Detector	RetinaFace
+Recognition	ArcFace
+Embedding Size	512
+Framework	ONNX / InsightFace
+🎯 If Interviewer Asks You
+
+You can say confidently:
+
+"I built a face recognition attendance system using RetinaFace for face detection and ArcFace deep learning model for 512-dimensional embedding extraction. I used cosine similarity for identity matching and deployed it using Flask REST API."
+
+🔥 That sounds professional.
+
+⚡ Alternative Option (Not Used)
+
+We DID NOT use:
+
+Haar Cascade ❌
+
+LBPH ❌
+
+dlib face_recognition ❌
+
+MTCNN ❌
+
+SVM ❌
+
+We used modern deep learning approach.
+
+🏆 Final Stack Summary
+Layer	Technology
+API	Flask
+Detection	RetinaFace
+Embedding	ArcFace
+Comparison	Cosine Similarity
+Language	Python
+Storage	Pickle (.pkl)
